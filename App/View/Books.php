@@ -149,7 +149,46 @@
             if (isNaN(perPage) || perPage === undefined) {
                 perPage = 5; }
             if (totalPage <= perPage) {
-                return true; }
+                $.ajax({
+                    url:"/App/Controller/functions.php?id=bycategory",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        perpage: perPage,
+                        category: 1
+                    },
+                    success: function (res) {
+                        console.log(res)
+                        $('#page-content').html('');
+                        var html = "";
+                        for(x in res) {
+                            if(x%2==0){
+                                html += '<div class="blog-card" onclick="goLink(\''+res[x].blog_url+'\')"><div class="meta">';
+                                html += '<div class="photo" style="background-image: url('+res[x].blog_photo+')"></div>';
+                                html += '<ul class="details"><li class="date">'+res[x].blog_pub_date+'</li></ul></div>';
+                                html += '<div class="description"><label class="blog-title">'+res[x].blog_title+'</label>';
+                                html += '<p style="padding-bottom: 30px;">'+res[x].blog_description+'</p>';
+                                html += '<div class="blog-from"><img src="'+res[x].blog_href+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
+                                html += '</div></div>';
+                            } else {
+                                html += '<div class="blog-card alt" onclick="goLink(\''+res[x].blog_url+'\')"><div class="meta">';
+                                html += '<div class="photo" style="background-image: url('+res[x].blog_photo+')"></div>';
+                                html += '<ul class="details"><li class="date">'+res[x].blog_pub_date+'</li></ul></div>';
+                                html += '<div class="description"><label class="blog-title">'+res[x].blog_title+'</label>';
+                                html += '<p style="padding-bottom: 30px;">'+res[x].blog_description+'</p>';
+                                html += '<div class="blog-from"><img src="'+res[x].blog_href+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
+                                html += '</div></div>';
+                            }
+                        }
+                        $('#page-content').html(html);
+                    },
+                    error: function(err){
+                        console.log(err)
+                    }
+                });
+                return true;
+            }
             paginate.createPage(1, perPage, totalPage);
             $(document).on('click', '.pagination-button', function(e) {
                 var currentPage = parseInt($('.pagination-button.active').text(), 10),
