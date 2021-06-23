@@ -25,6 +25,12 @@
 		case 'allrow':
 			getAllRow();
 			break;
+		case 'category':
+			getCategoryRows();
+			break;
+		case 'bycategory':
+			getPageByCate();
+			break;
 	}
 	function loginAction() {
 		global $dbConnection;
@@ -108,6 +114,37 @@
 		$row = mysqli_fetch_row($result);
 		$num = $row[0];
 		echo $num;
+		return ;
+	}
+	function getCategoryRows(){
+		global $dbConnection;
+		$category = $_POST['category'];
+		$query = "SELECT COUNT(blog_id) FROM jos_blogs WHERE blog_category = '{$category}'";
+		$result = mysqli_query($dbConnection, $query);
+		$row = mysqli_fetch_row($result);
+		$num = $row[0];
+		echo $num;
+		return ;
+	}
+	function getPageByCate(){
+		global $dbConnection;
+		$category = $_POST['category'];
+		$current = $_POST['current'];
+		$perpage = $_POST['perpage'];
+		$offest = 0;
+		if($current==1) $offest = 0;
+		else {
+			$offest = $perpage*($current-1);
+		}
+		$query = "SELECT * FROM jos_blogs WHERE blog_category = '{$category}' LIMIT {$perpage} OFFSET {$offest}";
+		$result = mysqli_query($dbConnection, $query);
+		$numrows =mysqli_num_rows($result);
+		if(!$result) {echo "NO"; return;}
+		for($count = 0; $count < $numrows; $count++){
+			$ac = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$data[] = $ac;
+		}
+		print_r(json_encode($data)) ;
 		return ;
 	}
 ?>

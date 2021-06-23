@@ -7,6 +7,7 @@ a {
 }
 .responsive-before a {
     color: #fff;
+    border: solid 2px rgba(0, 0, 0, 0);
 }
 
 ul {
@@ -46,6 +47,7 @@ ul {
 /* nav-bar css code */
 .main-page {
     margin-top: 90px;
+    margin-bottom: 50px;
 }
 .navbars {
     width: 100%;
@@ -174,11 +176,14 @@ ul {
         display: flex;
     }
 }
+#page-content {
+    padding: 0px 20px 0px 20px;
+}
 .blog-card {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
-  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  box-shadow: 2px 9px 7px 0px rgba(0, 0, 0, 0.3);
   margin-bottom: 1.6%;
   background: #fff;
   line-height: 1.4;
@@ -186,6 +191,11 @@ ul {
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
+  cursor: pointer;
+}
+.blog-card .blog-title {
+    font-size: 20px;
+    font-weight: 700;
 }
 .blog-card a {
   color: inherit;
@@ -194,7 +204,7 @@ ul {
   color: #5ad67d;
 }
 .blog-card:hover .photo {
-  transform: scale(1.3) rotate(3deg);
+  transform: scale(1.2) rotate(1.5deg);
 }
 .blog-card .meta {
   position: relative;
@@ -209,7 +219,7 @@ ul {
   left: 0;
   background-size: cover;
   background-position: center;
-  transition: transform 0.2s;
+  transition: transform 0.3s;
 }
 .blog-card .details,
 .blog-card .details ul {
@@ -224,7 +234,7 @@ ul {
   left: -100%;
   margin: auto;
   transition: left 0.2s;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 10px;
   width: 100%;
@@ -245,7 +255,7 @@ ul {
 .blog-card .details .date:before {
   font-family: FontAwesome;
   margin-right: 10px;
-  content: "";
+  content: "♡"
 }
 .blog-card .details .tags ul:before {
   font-family: FontAwesome;
@@ -312,17 +322,30 @@ ul {
   position: absolute;
   height: 5px;
   background: #5ad67d;
-  width: 35px;
+  width: 100px;
   top: -0.75rem;
   border-radius: 3px;
 }
 .blog-card:hover .details {
   left: 0%;
 }
+.blog-card .blog-from {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+.blog-card .blog-from .blog-favicon {
+    width: 30px;
+    height: 30px;
+}
 @media (min-width: 640px) {
   .blog-card {
     flex-direction: row;
-    max-width: 700px;
+    max-width: 1000px;
+    min-height: 225px;
   }
   .blog-card .meta {
     flex-basis: 40%;
