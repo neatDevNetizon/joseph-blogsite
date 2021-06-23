@@ -160,6 +160,9 @@
             .before-publish .date_picker {
                 margin-left: 0px;
             }
+            .link-preview #preview_image {
+                object-fit: fill;
+            }
         }
     </style>
 </head>

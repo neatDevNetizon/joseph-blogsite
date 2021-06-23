@@ -1,3 +1,4 @@
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <nav class="navbar-default navbar-static-side" id="leftsidebar" role="navigation"> 
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
@@ -41,7 +42,7 @@
                    
                     <li>
                         <a href="#">
-                            <img src="/App/View/img/Sign-out.svg">&nbsp;<span class="txt-d-none">Log out</span>
+                            <span class="iconify" data-icon="mdi:logout" data-inline="false" data-width="25" data-height="25"></span>&nbsp;<span class="txt-d-none">Log out</span>
                         </a>
                     </li>
                 </ul>

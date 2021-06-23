@@ -31,6 +31,12 @@
 		case 'bycategory':
 			getPageByCate();
 			break;
+		case 'dashboard':
+			getDashboard();
+			break;
+		case 'blogs':
+			getAllBlogs();
+			break;
 	}
 	function loginAction() {
 		global $dbConnection;
@@ -145,6 +151,30 @@
 			$data[] = $ac;
 		}
 		print_r(json_encode($data)) ;
+		return ;
+	}
+	function getDashboard() {
+		global $dbConnection;
+		$query = "SELECT COUNT(blog_id) AS nums FROM jos_blogs WHERE blog_category = 1 UNION SELECT COUNT(blog_id) AS nums FROM jos_blogs WHERE blog_category = 2 UNION SELECT COUNT(blog_id) AS nums FROM jos_blogs WHERE blog_category = 3 ";
+		$result = mysqli_query($dbConnection, $query);
+		$numrows =mysqli_num_rows($result);
+		for($count = 0; $count < $numrows; $count++){
+			$ac = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$data[] = $ac;
+		}
+		print_r(json_encode($data));
+		return ;
+	}
+	function getAllBlogs(){
+		global $dbConnection;
+		$query = "SELECT * FROM jos_blogs";
+		$result = mysqli_query($dbConnection, $query);
+		$numrows =mysqli_num_rows($result);
+		for($count = 0; $count < $numrows; $count++){
+			$ac = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$data[] = $ac;
+		}
+		print_r(json_encode($data));
 		return ;
 	}
 ?>
