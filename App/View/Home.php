@@ -113,13 +113,16 @@
                         $('#page-content').html('');
                         var html = "";
                         for(x in res) {
+                            console.log(res[x].blog_href)
+                            if(res[x].blog_href === '' || res[x].blog_href === null ) favicon = "/App/View/img/default_fav.png";
+                            else favicon = res[x].blog_href;
                             if(x%2==0){
                                 html += '<div class="blog-card" onclick="goLink(\''+res[x].blog_url+'\')"><div class="meta">';
                                 html += '<div class="photo" style="background-image: url('+res[x].blog_photo+')"></div>';
                                 html += '<ul class="details"><li class="date">'+res[x].blog_pub_date+'</li></ul></div>';
                                 html += '<div class="description"><label class="blog-title">'+res[x].blog_title+'</label>';
                                 html += '<p style="padding-bottom: 30px;">'+res[x].blog_description+'</p>';
-                                html += '<div class="blog-from"><img src="'+res[x].blog_href+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
+                                html += '<div class="blog-from"><img src="'+favicon+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
                                 html += '</div></div>';
                             } else {
                                 html += '<div class="blog-card alt" onclick="goLink(\''+res[x].blog_url+'\')"><div class="meta">';
@@ -127,7 +130,7 @@
                                 html += '<ul class="details"><li class="date">'+res[x].blog_pub_date+'</li></ul></div>';
                                 html += '<div class="description"><label class="blog-title">'+res[x].blog_title+'</label>';
                                 html += '<p style="padding-bottom: 30px;">'+res[x].blog_description+'</p>';
-                                html += '<div class="blog-from"><img src="'+res[x].blog_href+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
+                                html += '<div class="blog-from"><img src="'+favicon+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
                                 html += '</div></div>';
                             }
                         }
@@ -161,13 +164,15 @@
                         $('#page-content').html('');
                         var html = "";
                         for(x in res) {
+                            if(res[x].blog_href === '' || res[x].blog_href === null ) favicon = "/App/View/img/default_fav.png";
+                            else favicon = res[x].blog_href;
                             if(x%2==0){
                                 html += '<div class="blog-card" onclick="goLink(\''+res[x].blog_url+'\')"><div class="meta">';
                                 html += '<div class="photo" style="background-image: url('+res[x].blog_photo+')"></div>';
                                 html += '<ul class="details"><li class="date">'+res[x].blog_pub_date+'</li></ul></div>';
                                 html += '<div class="description"><label class="blog-title">'+res[x].blog_title+'</label>';
                                 html += '<p style="padding-bottom: 30px;">'+res[x].blog_description+'</p>';
-                                html += '<div class="blog-from"><img src="'+res[x].blog_href+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
+                                html += '<div class="blog-from"><img src="'+favicon+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
                                 html += '</div></div>';
                             } else {
                                 html += '<div class="blog-card alt" onclick="goLink(\''+res[x].blog_url+'\')"><div class="meta">';
@@ -175,7 +180,7 @@
                                 html += '<ul class="details"><li class="date">'+res[x].blog_pub_date+'</li></ul></div>';
                                 html += '<div class="description"><label class="blog-title">'+res[x].blog_title+'</label>';
                                 html += '<p style="padding-bottom: 30px;">'+res[x].blog_description+'</p>';
-                                html += '<div class="blog-from"><img src="'+res[x].blog_href+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
+                                html += '<div class="blog-from"><img src="'+favicon+'" class="blog-favicon"/>&nbsp;<a href="#">'+res[x].blog_sitename+'</a></div>';
                                 html += '</div></div>';
                             }
                         }
